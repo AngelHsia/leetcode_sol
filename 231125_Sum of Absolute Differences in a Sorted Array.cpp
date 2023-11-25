@@ -1,28 +1,26 @@
 #include <iostream>
+#include <vector>
 using namespace std;
-
-class Node {
-public:
-    int val;
-    Node* next;
-    Node* random;
-    
-    Node(int _val) {
-        val = _val;
-        next = NULL;
-        random = NULL;
-    }
-};
 
 class Solution {
 public:
-    Node* copyRandomList(Node* head) {
-        Node* og_current_node = head;
-        Node* new_nodes(0);
-        while(og_current_node != NULL){
-            
-            return 0;
+    vector<int> getSumAbsoluteDifferences(vector<int>& nums) {
+        int len = nums.size();
+        vector<int> result(len, 0);
+
+        int sum = 0;
+        for (int i=0 ; i<len ; i++){
+            sum += nums[i];
         }
+        int left_sum = 0;
+        int right_sum = sum;
+
+        for (int i=0 ; i<len ; i++) {
+            result[i] = right_sum - (len-i)*nums[i] -left_sum + (i)*nums[i];
+            right_sum -= nums[i];
+            left_sum += nums[i];
+        }
+        return result;
     }
 };
 
